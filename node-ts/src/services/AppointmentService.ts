@@ -32,9 +32,13 @@ class AppointmentService {
     /**
      * Listar agendamentos
      */
-    public listAppointments(): Promise<Appointment[]> {
+    public getAppointmentsById(id: string): Promise<Appointment[]> {
         const appointmentRepository = getCustomRepository(AppointmentsRepository);
-        return appointmentRepository.find()
+        return appointmentRepository.find({
+            where: {
+                id,
+            }
+        })
     }
 }
 
