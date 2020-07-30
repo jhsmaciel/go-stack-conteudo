@@ -20,7 +20,7 @@
     ],
     "rules": {
         "prettier/prettier": "error",
-        "indent": ["error", 4],
+        // "indent": ["error", 4],
         "no-console": "off",
         "import/extensions": [
             "error",
@@ -28,7 +28,9 @@
             {
                 "ts": "never"
             }
-        ]
+        ],
+        "class-methods-use-this": "off",
+        "camelcase": "off"
     },
     "settings": {
         "import/resolver": {

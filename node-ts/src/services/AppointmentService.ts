@@ -1,30 +1,35 @@
-
 import { getCustomRepository } from 'typeorm';
 import Appointment from '../models/Appointment';
 import AppointmentsRepository from '../repositories/AppointmentRepository';
+import AppError from '../errors/AppError';
 
 interface CreateAppointmentDTO {
-    provider_id: string,
-    date: Date,
+    provider_id: string;
+    date: Date;
 }
 
 class AppointmentService {
     /**
      * Criar agendamentos
      */
-    public async create({ date, provider_id }: CreateAppointmentDTO): Promise<Appointment> {
-        const appointmentRepository = getCustomRepository(AppointmentsRepository);
+    public async create({
+        date,
+        provider_id,
+    }: CreateAppointmentDTO): Promise<Appointment> {
+        const appointmentRepository = getCustomRepository(
+            AppointmentsRepository,
+        );
 
         const findedAppointment = await appointmentRepository.findByDate(date);
 
-        if(findedAppointment) {
-            throw new Error('This appointment is already booked!')
+        if (findedAppointment) {
+            throw new AppError('This appointment is already booked.');
         }
 
         const appointment = await appointmentRepository.save({
             provider_id,
             date,
-        })
+        });
 
         return appointment;
     }
@@ -33,12 +38,14 @@ class AppointmentService {
      * Listar agendamentos
      */
     public getAppointmentsById(id: string): Promise<Appointment[]> {
-        const appointmentRepository = getCustomRepository(AppointmentsRepository);
+        const appointmentRepository = getCustomRepository(
+            AppointmentsRepository,
+        );
         return appointmentRepository.find({
             where: {
-                id,
-            }
-        })
+                provider_id: id,
+            },
+        });
     }
 }
 

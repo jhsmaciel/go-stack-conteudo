@@ -5,9 +5,8 @@ import sessionRoutes from './session.routes';
 
 const routes = Router();
 
-routes.use('/appointment',appointmentRoutes);
+routes.use('/appointment', appointmentRoutes);
 routes.use('/user', userRoutes);
-routes.use('/session', sessionRoutes)
-
+routes.use('/session', sessionRoutes);
 
 export default routes;

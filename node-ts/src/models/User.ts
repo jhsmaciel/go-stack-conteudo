@@ -1,8 +1,13 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import {
+    Entity,
+    Column,
+    PrimaryGeneratedColumn,
+    CreateDateColumn,
+    UpdateDateColumn,
+} from 'typeorm';
 
 @Entity('users')
 class User {
-
     @Column()
     @PrimaryGeneratedColumn('uuid')
     id: string;
@@ -12,6 +17,9 @@ class User {
 
     @Column()
     email: string;
+
+    @Column()
+    avatar?: string;
 
     @Column()
     password: string;
