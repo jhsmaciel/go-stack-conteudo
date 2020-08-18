@@ -31,7 +31,7 @@
         "prettier/prettier": "error",
         "react/jsx-one-expression-per-line": "off",
         "react/jsx-props-no-spreading": "off",
-        "react/props-type": "off",
+        "react/prop-types": "off",
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
         "no-unused-expressions": "off",
