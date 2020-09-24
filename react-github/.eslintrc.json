@@ -6,7 +6,6 @@
     "extends": [
         "plugin:react/recommended",
         "airbnb",
-        "plugin:@typescript/recommended",
         "prettier/@typescript-eslint",
         "plugin:prettier/recommended"
     ],
@@ -23,13 +22,18 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react",
         "react-hooks",
         "@typescript-eslint",
         "prettier"
     ],
     "rules": {
-        "prettier-prettier": "error",
+        "prettier/prettier": ["error", {
+            "endOfLine":"auto",
+            "printWidth": 110
+        }],
+        "camelcase": "off",
+        "react/jsx-indent": ["error", 4],
+        "react/jsx-indent-props": ["error", 4],
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
         "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
